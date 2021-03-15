@@ -5,10 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "PowerShell Launch Script",
+            "name": "Run",
             "type": "PowerShell",
             "request": "launch",
-            "script": "${workspaceFolder}/backup.ps1",
+            "script": "${workspaceFolder}/7zipwinbackup.ps1",
+            "args": [
+                "-sourceDirectory",
+                "${workspaceFolder}",
+                "-destinationDirectory",
+                "${workspaceFolder}",
+                "-archiveName",
+                "backup",
+                "-secretFile",
+                "${workspaceFolder}\\secret.txt"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Clean",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Remove-Item",
+            "args": ["*", "-Include", "*.7z"],
             "cwd": "${workspaceFolder}"
         }
     ]
